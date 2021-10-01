@@ -12,6 +12,7 @@
 
     {{!-- Preload assets --}}
     <link rel="preload" href="{{asset "css/app.css"}}" as="style" />
+    <link rel="preload" href="{{asset "fonts/geomanist.css"}}" as="style" />
     <link rel="preload" href="{{asset "js/manifest.js"}}" as="script" />
     <link rel="preload" href="{{asset "js/vendor/content-api.min.js"}}" as="script" />
     <link rel="preload" href="{{asset "js/vendor.js"}}" as="script" />
@@ -25,6 +26,14 @@
     {{!-- Styles & Scripts --}}
     <style>
       /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* Inconsolata semibold */
+      @font-face {
+        font-family: 'Inconsolata';
+        font-style: normal;
+        font-weight: 600;
+        src: url("{{asset 'fonts/inconsolata/Inconsolata-SemiBold.ttf'}}") format('truetype');
+      }
 
       /* source-sans-pro-regular */
       @font-face {
@@ -72,11 +81,42 @@
         url("{{asset 'fonts/icomoon/icomoon.svg?101fc3#icomoon'}}") format('svg');
       }
     </style>
-
     <link rel="stylesheet" type="text/css" href="{{asset "css/app.css"}}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{asset "fonts/geomanist.css"}}" media="screen" />
 
     {{!-- This #block helper will inject a stylesheet for a specific page --}}
     {{{block "styles"}}}
+
+    {{!-- Custom configuration for my website --}}
+    <style>
+      * {
+        letter-spacing: 0.01em !important;
+      }
+
+      .m-article-card__tag, .m-heading__meta, .m-hero-description, .m-section-title, .m-pagination {
+        font-family: 'Inconsolata', monospace;
+      }
+
+      .l-post-content h2 {
+        z-index: 1;
+        position: relative;
+        vertical-align: top;
+        display: inline-block;
+      }
+
+      .l-post-content h2::before {
+        content: '';
+        z-index: -1;
+        height: 12px;
+        width: 100%;
+        bottom: 5px;
+        display: block;
+        position: absolute;
+        background: rgba(124, 141, 182, 0.5);
+        opacity: 0.6;
+        left: 0;
+      }
+    </style>
 
     {{!-- This #block helper will pull data from the hero partial 
     to inject styles of the hero image to make it responsive --}}

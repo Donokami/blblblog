@@ -151,7 +151,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
     }
 
     if (action === 'signup') {
-      window.location = "".concat(ghostHost, "/signup/?action=checkout");
+      window.location = ghostHost;
     }
 
     if (action === 'checkout') {
